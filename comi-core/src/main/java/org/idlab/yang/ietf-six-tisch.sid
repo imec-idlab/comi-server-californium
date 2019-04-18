@@ -1,0 +1,19 @@
+ 	  SID_scheduler = 4000;
+ 	  SID_enabled = 4001; 
+ 	    
+ 	  SID_celllist = 4002;
+	  SID_cellid = 4003;
+	  SID_slotframeid = 4004;
+ 	  SID_slotoffset = 4005;
+ 	  SID_channeloffset = 4006;
+	  SID_linkoption = 4007;
+ 	  SID_nodeaddress = 4008;
+ 	  SID_statistics = 4009;
+ 	  SID_cellage = 4010;
+
+ 	  SID_neighborlist = 4011;
+ 	  SID_neighborid = 4012;
+	  SID_neighborAddr = 4013;
+	  SID_rssi = 4014;
+	  SID_lqi = 4015;
+ 	  SID_neighborage = 4016;

@@ -1,0 +1,201 @@
+module ietf-six-tisch{
+
+   namespace "urn:ietf:params:xml:ns:yang:ietf-six-tisch";
+
+   prefix "sixtisch";
+
+   organization "IDlab";
+   
+   contact "abdulkadir.karaagac@ugent.be";
+   
+   description "Abstract Data model for the 6TiSCH sub-layer, only for schedule management.";
+
+   revision 2017-03-27 {
+      description
+      "v0 revision.";
+      reference 
+    	  "first revision";
+   }
+
+   typedef nodeaddresstype {
+      type uint16;
+      description
+         "The type to store node address. It can be 64bits EUI address;
+         or the short address defined by 6top, constrained by TSCH 
+         macNodeAddress size, 2-octets.";
+   }
+   container Scheduler{
+	   
+       presence "Enables centralized schedule management unless the 'enabled' leaf
+           (which defaults to 'true') is set to 'false'"; 
+       
+       description
+       "Interface to manage TSCH schedules from a centralized unit";
+	  
+       leaf Enabled {
+           type boolean;
+           default true;
+           description
+             "Controls whether Centralized schedulign is enabled or disabled on this
+              interface.";
+         }
+      }
+   
+   list CellList {
+       key "CellID";
+       unique "SlotframeID SlotOffset ChannelOffset";
+       min-elements 1;
+
+       description
+       "List of scheduled cells of a node with all of its neighbors,
+       in all of its slotframes.";
+
+       leaf CellID {
+          type uint8;
+          description
+          "Equal to Linkhandle in the linkTable of TSCH";
+          reference
+          "IEEE802154e";
+       }
+       leaf SlotframeID {
+          type uint8;
+          description
+          "SlotframeID, one in SlotframeList, indicates the slotframe
+          the cell belongs to.";
+          reference
+          "IEEE802154e";
+       }
+       leaf SlotOffset {
+          type uint8;
+          description
+          "Defined in IEEE802154e.";
+          reference
+          "IEEE802154e";
+       }
+       leaf ChannelOffset {
+          type uint8{
+              range "0..15";
+          }
+          description
+          "Defined in IEEE802154e. Value range is 0..15";
+          reference
+          "IEEE802154e";
+       }
+       leaf LinkOption {
+          type bits {
+             bit Transmit {
+                position 0;
+                description
+                    "If Cell is a Transmit Cell or Not";
+             }
+             bit Receive {
+                position 1;
+                description
+                    "If Cell is a Receive Cell or Not";
+             }
+             bit Shared {
+                position 2;
+                description
+                    "If Cell is a Shared Cell or Not";
+             }
+             bit Timekeeping {
+                position 3;
+                description
+                    "If Cell is a Timekeeping Cell or Not";
+             }
+             bit Priority {
+                 position 4;
+                 description
+                     "Priority Cell or Not";
+              }
+             bit LinkType {
+                 position 5;
+                 description
+                     "Defines if the Cell is a Hard(1) or Soft(0) Cell";
+              }
+             bit Reserved1 {
+                 position 6;
+                 description
+                     "Reserved";
+              }
+             bit Reserved2 {
+                 position 7;
+                 description
+                     "Reserved";
+              }
+          } 
+          description
+          "Defined in IEEE802154e.";
+          reference
+          "IEEE802154e";
+       }
+
+       leaf NodeAddress {
+          type nodeaddresstype;
+          description
+          "specify the target node address.";
+       }        
+       
+       leaf Statistics {
+           type uint8;
+           config false;
+           description
+           "numTX-ACK/numTX";
+           reference
+           "A-K";
+        }
+       
+       leaf CellAge {
+           type uint16;
+           config false;
+           description
+           "The duration in ASN since the last use of the particular cell";
+           reference
+           "A-K";
+        }
+    }
+
+   
+   list NeighborList {
+      key "NeighborID";
+      description
+      "statistics per communication link. ";
+
+      leaf NeighborID {
+          type uint8;
+          config false;
+          description
+          "Equal to Linkhandle in the Neighbor Table";
+          reference
+          "A-K";
+       }
+       leaf NodeAddress {
+         type nodeaddresstype;
+         config false;
+         description
+         "Specifies the address of the neighbor.";
+      }      
+      leaf RSSI {
+         type uint8;
+         config false;
+         description
+         "The received signal strength";
+      }
+      leaf LinkQuality {
+          type uint8;
+          config false;
+          description
+          "numTX-ACK/numTX";
+          reference
+          "A-K";
+      }
+      leaf NeighborAge {
+          type uint16;
+          config false;
+          description
+          "The duration in ASN since the last interaction with the neighbor";
+          reference
+          "A-K";
+       }
+   }
+}
