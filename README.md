@@ -1,94 +1,35 @@
-![Californium logo](californium-180.png)
+# Hybrid Scheduling - Network Manager
 
-Eclipse Californium is a Java implementation of [RFC7252 - Constrained Application Protocol](http://tools.ietf.org/html/rfc7252) for IoT Cloud services. Thus, the focus is on scalability and usability instead of resource-efficiency
-like for embedded devices. Yet Californium is also suitable for embedded JVMs.
+This repository contains the network manager related code for the paper *[Hybrid schedule management in 6TiSCH networks: the coexistence of determinism and flexibility](https://ieeexplore.ieee.org/document/8390881)*.
 
-More information can be found at
-[http://www.eclipse.org/californium/](http://www.eclipse.org/californium/)
-and [http://coap.technology/](http://coap.technology/).
+If you use this repository, please cite our paper:
 
-# Build using Maven
+### BIBTEX ###
+'''
+@ARTICLE{8390881,  
+    author={Karaagac, Abdulkadir and Moerman, Ingrid and Hoebeke, Jeroen},  
+    journal={IEEE Access},   
+    title={Hybrid Schedule Management in 6TiSCH Networks: The Coexistence of Determinism and Flexibility},   
+    year={2018},
+    month={June},  
+    volume={6},  
+    number={},  
+    pages={33941-33952},   
+    keywords={},  
+    doi={10.1109/ACCESS.2018.2849090},  
+    ISSN={2169-3536},  
+}
+'''
 
-You need to have a working maven installation to build Californium.
-Then simply run the following from the project's root directory:
-
-```sh
-$ mvn clean install
-```
-
-Executable JARs of the examples with all dependencies can be found in the `demo-apps/run` folder.
-
-# Using Californium in Maven Projects
-
-We are publishing Californium's artifacts for milestones and releases to [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Ccalifornium).
-To use the latest released version as a library in your projects, add the following dependency
-to your `pom.xml` (without the dots):
-
-```xml
-  <dependencies>
-    ...
-    <dependency>
-            <groupId>org.eclipse.californium</groupId>
-            <artifactId>californium-core</artifactId>
-            <version>1.0.4</version>
-    </dependency>
-    ...
-  </dependencies>
-  ...
-```
-
-If you want to give the most recent milestone a try, use version `2.0.0-M2` instead.
-
-##### Current Master Builds
-
-You can also be bold and try out the most recent build from `master`.
-However, we are not publishing those to Maven Central but to Californium's project repository at Eclipse only.
-You will therefore need to add the Eclipse Repository to your `pom.xml` first:
-
-```
-  <repositories>
-    ...
-    <repository>
-      <id>repo.eclipse.org</id>
-      <name>Californium Repository</name>
-      <url>https://repo.eclipse.org/content/repositories/californium/</url>
-    </repository>
-    ...
-  </repositories>
-```
-You can then simply depend on `1.1.0-SNAPHOT`.
- 
-# Eclipse
-
-The project can be easily imported into a recent version of the Eclipse IDE.
-Make sure to have the following before importing the Californium (Cf) projects:
-
-* [Eclipse EGit](http://www.eclipse.org/egit/) (should be the case with every recent Eclipse version)
-* [m2e - Maven Integration for Eclipse](http://www.eclipse.org/m2e/) (should be the case with every recent Eclipse version)
-* UTF-8 workspace text file encoding (Preferences &raquo; General &raquo; Workspace)
-
-Then choose *[Import... &raquo; Maven &raquo; Existing Maven Projects]* to import `californium` into Eclipse.
-
-# IntelliJ
-
-The project can also be imported to IntelliJ as follows:
-
-In IntelliJ, choose *[File.. &raquo; Open]* then select the location of the cloned repository in your filesystem. IntelliJ will then automatically import all projects and resolve required Maven dependencies.
-
-# Interop Server
-
-A test server is running at [coap://iot.eclipse.org:5683/](coap://iot.eclipse.org:5683/).
-The root resource responds with its current version.
-
-Another interop server with a different implementation can be found at
-[coap://coap.me:5683/](coap://coap.me:5683/).
-More information can be found at [http://coap.me/](http://coap.me/).
-
-# Contact
-
-A bug, an idea, an issue? Join the [Mailing list](https://dev.eclipse.org/mailman/listinfo/cf-dev)
-or create an issue here on GitHub.
-
-# Contributing
-
-Please check out our [contribution guidelines](CONTRIBUTING.md)
+### MLA ###
+> Karaağaç, Abdulkadir, Ingrid Moerman, and Jeroen Hoebeke. “Hybrid Schedule Management in 6TiSCH Networks : the Coexistence of Determinism and Flexibility.” IEEE ACCESS 6 (2018): 33941–33952. Print.
+### APA ###
+> Karaağaç, A., Moerman, I., & Hoebeke, J. (2018). Hybrid schedule management in 6TiSCH networks : the coexistence of determinism and flexibility. IEEE ACCESS, 6, 33941–33952.
+### Chicago author-date ###
+> Karaağaç, Abdulkadir, Ingrid Moerman, and Jeroen Hoebeke. 2018. “Hybrid Schedule Management in 6TiSCH Networks : the Coexistence of Determinism and Flexibility.” Ieee Access 6: 33941–33952.
+### Chicago author-date (all authors) ###
+> Karaağaç, Abdulkadir, Ingrid Moerman, and Jeroen Hoebeke. 2018. “Hybrid Schedule Management in 6TiSCH Networks : the Coexistence of Determinism and Flexibility.” Ieee Access 6: 33941–33952.
+### Vancouver ###
+> 1. Karaağaç A, Moerman I, Hoebeke J. Hybrid schedule management in 6TiSCH networks : the coexistence of determinism and flexibility. IEEE ACCESS. Institute of Electrical and Electronics Engineers (IEEE); 2018;6:33941–52.
+### IEEE ###
+> [1] A. Karaağaç, I. Moerman, and J. Hoebeke, “Hybrid schedule management in 6TiSCH networks : the coexistence of determinism and flexibility,” IEEE ACCESS, vol. 6, pp. 33941–33952, 2018.
